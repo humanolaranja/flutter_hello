@@ -6,16 +6,6 @@ class: invert
 
 # Hello World com Flutter 🌎
 
----
-
-# Prazer, Humano 👽
-### Dev Mobile Híbrido - Jetsons
-###### Gosto de Cubo Mágico
-###### Curto Jogos de Tabuleiro
-###### Sei ler e escrever em morse
-
----
-
 # O que é Flutter?
 #### "Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
 
@@ -32,7 +22,7 @@ class: invert
 ---
 
 ## Código 🖥️
-#### PokeDextra!
+#### Pokedex!
 ![height:300px](assets/readme/pokebola.jpg)
 
 
