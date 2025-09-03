@@ -5,14 +5,14 @@ import 'package:flutter_hello/routes.dart';
 import 'package:flutter_hello/service/pokemons.dart';
 
 class PokemonsPage extends StatefulWidget {
-  PokemonsPage({Key key}) : super(key: key);
+  PokemonsPage({Key? key}) : super(key: key);
 
   @override
   _PokemonsPageState createState() => _PokemonsPageState();
 }
 
 class _PokemonsPageState extends State<PokemonsPage> {
-  Future<List<Pokemon>> futurePokemon;
+  late Future<List<Pokemon>> futurePokemon;
 
   @override
   void initState() {
@@ -32,16 +32,17 @@ class _PokemonsPageState extends State<PokemonsPage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
-                  itemCount: snapshot.data.length,
+                  itemCount: snapshot.data?.length,
                   itemBuilder: (context, index) {
-                    Pokemon item = snapshot.data[index];
+                    Pokemon item = snapshot.data![index];
 
                     return Card(
                         child: Padding(
                       padding: EdgeInsets.all(32),
                       child: Container(
                         child: GestureDetector(
-                          onTap: () => Navigator.pushNamed(context, Routes.pokemonDetailsPagePath, arguments: Pokemon(name: item.name, url: item.url)),
+                          onTap: () => Navigator.pushNamed(context, Routes.pokemonDetailsPagePath,
+                              arguments: Pokemon(name: item.name, url: item.url)),
                           child: Hero(
                             tag: item.name,
                             child: Material(

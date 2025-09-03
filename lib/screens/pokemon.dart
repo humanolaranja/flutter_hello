@@ -5,14 +5,14 @@ import 'package:flutter_hello/service/pokemons.dart';
 
 class PokemonPage extends StatefulWidget {
   final Pokemon pokemon;
-  const PokemonPage(this.pokemon, {Key key}) : super(key: key);
+  const PokemonPage(this.pokemon, {Key? key}) : super(key: key);
 
   @override
   _PokemonPageState createState() => _PokemonPageState();
 }
 
 class _PokemonPageState extends State<PokemonPage> {
-  Future<PokemonDetails> futurePokemon;
+  late Future<PokemonDetails> futurePokemon;
 
   @override
   void initState() {
@@ -36,13 +36,13 @@ class _PokemonPageState extends State<PokemonPage> {
                 future: futurePokemon,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return (Image.network(
-                      snapshot.data.sprites.image,
+                    return Image.network(
+                      snapshot.data!.sprites.image,
                       height: 100,
                       fit: BoxFit.fitWidth,
-                    ));
+                    );
                   } else if (snapshot.hasError) {
-                    return Text(snapshot.error);
+                    return Text(snapshot.error.toString());
                   }
                   return CircularProgressIndicator();
                 }),

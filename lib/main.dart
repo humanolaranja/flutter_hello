@@ -9,15 +9,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PokeDextra Flutter',
+      title: 'Pokedex Flutter',
       theme: ThemeData(
         primarySwatch: Colors.red,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: Routes.pokemonPagePath,
       onGenerateRoute: (RouteSettings settings) {
         WidgetBuilder builder = Routes().getDefault(settings.arguments)[settings.name];
-        return MaterialPageRoute(builder: (ctx) => builder(ctx));
+        return MaterialPageRoute(builder: (context) => builder(context));
       },
     );
   }

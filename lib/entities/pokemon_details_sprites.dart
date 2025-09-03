@@ -1,8 +1,9 @@
 class PokemonDetailsSprite {
-  static String defaultImage = 'https://img.elo7.com.br/product/zoom/28E57D8/pokebola-eva.jpg';
+  static String defaultImage =
+      'https://www.clipartmax.com/png/small/129-1298328_pokeball-pokemon-ball-hd-images-free-png-image-pokebola-png.png';
   final String image;
 
-  PokemonDetailsSprite({this.image});
+  PokemonDetailsSprite({required this.image});
 
   factory PokemonDetailsSprite.fromJson(Map<String, dynamic> json) {
     return PokemonDetailsSprite(
