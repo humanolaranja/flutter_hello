@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello/providers/favorite_pokemon_notifier.dart';
+import 'package:flutter_hello/providers/pokemon_provider.dart';
 import 'package:flutter_hello/routes.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => PokemonProvider()),
+        ChangeNotifierProvider(create: (_) => FavoritePokemonNotifier()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Pokedex Flutter',
       theme: ThemeData(
         primarySwatch: Colors.red,
+        brightness: Brightness.light,
       ),
       initialRoute: Routes.pokemonPagePath,
       onGenerateRoute: (RouteSettings settings) {
