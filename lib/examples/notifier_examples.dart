@@ -7,19 +7,19 @@ import 'package:provider/provider.dart';
 // Example 1: Simple Counter with ChangeNotifier
 class CounterChangeNotifier extends ChangeNotifier {
   int _count = 0;
-  
+
   int get count => _count;
-  
+
   void increment() {
     _count++;
     notifyListeners();
   }
-  
+
   void decrement() {
     _count--;
     notifyListeners();
   }
-  
+
   void reset() {
     _count = 0;
     notifyListeners();
@@ -29,10 +29,10 @@ class CounterChangeNotifier extends ChangeNotifier {
 // Example 2: Theme Switcher with ChangeNotifier
 class ThemeChangeNotifier extends ChangeNotifier {
   bool _isDarkMode = false;
-  
+
   bool get isDarkMode => _isDarkMode;
   ThemeMode get themeMode => _isDarkMode ? ThemeMode.dark : ThemeMode.light;
-  
+
   void toggleTheme() {
     _isDarkMode = !_isDarkMode;
     notifyListeners();
@@ -42,21 +42,21 @@ class ThemeChangeNotifier extends ChangeNotifier {
 // Example 3: Simple Counter with ValueNotifier
 class CounterValueNotifierExample extends StatelessWidget {
   CounterValueNotifierExample({Key? key}) : super(key: key);
-  
+
   // Create a ValueNotifier with an initial value of 0
   final ValueNotifier<int> _counter = ValueNotifier<int>(0);
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ValueNotifier Example'),
+        title: const Text('ValueNotifier Example'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You have pushed the button this many times:'),
+            const Text('You have pushed the button this many times:'),
             // Use ValueListenableBuilder to rebuild only when the value changes
             ValueListenableBuilder<int>(
               valueListenable: _counter,
@@ -74,7 +74,7 @@ class CounterValueNotifierExample extends StatelessWidget {
         // Update the value directly
         onPressed: () => _counter.value++,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -83,15 +83,15 @@ class CounterValueNotifierExample extends StatelessWidget {
 // Example 4: Form Field with ValueNotifier
 class FormFieldValueNotifierExample extends StatelessWidget {
   FormFieldValueNotifierExample({Key? key}) : super(key: key);
-  
+
   final ValueNotifier<String> _name = ValueNotifier<String>('');
   final ValueNotifier<bool> _isValid = ValueNotifier<bool>(false);
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Form ValueNotifier Example'),
+        title: const Text('Form ValueNotifier Example'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -99,7 +99,7 @@ class FormFieldValueNotifierExample extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Name',
                 hintText: 'Enter your name',
               ),
@@ -108,21 +108,21 @@ class FormFieldValueNotifierExample extends StatelessWidget {
                 _isValid.value = value.length >= 3;
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ValueListenableBuilder<String>(
               valueListenable: _name,
               builder: (context, value, child) {
-                if (value.isEmpty) return SizedBox.shrink();
+                if (value.isEmpty) return const SizedBox.shrink();
                 return Text('Hello, $value!');
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ValueListenableBuilder<bool>(
               valueListenable: _isValid,
               builder: (context, isValid, child) {
                 return ElevatedButton(
                   onPressed: isValid ? () {} : null,
-                  child: Text('Submit'),
+                  child: const Text('Submit'),
                 );
               },
             ),
@@ -141,13 +141,13 @@ class CombinedNotifierExample extends StatelessWidget {
   Widget build(BuildContext context) {
     // Access the ChangeNotifier through Provider
     final themeNotifier = context.watch<ThemeChangeNotifier>();
-    
+
     // Create a local ValueNotifier
     final textSize = ValueNotifier<double>(16.0);
-    
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Combined Notifiers Example'),
+        title: const Text('Combined Notifiers Example'),
         actions: [
           IconButton(
             icon: Icon(themeNotifier.isDarkMode ? Icons.light_mode : Icons.dark_mode),
@@ -168,12 +168,12 @@ class CombinedNotifierExample extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  icon: Icon(Icons.remove),
+                  icon: const Icon(Icons.remove),
                   onPressed: () {
                     if (textSize.value > 8) {
                       textSize.value -= 2;
@@ -181,14 +181,14 @@ class CombinedNotifierExample extends StatelessWidget {
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                   onPressed: () {
                     textSize.value += 2;
                   },
                 ),
               ],
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Text(
               'Theme is controlled by ChangeNotifier',
               style: Theme.of(context).textTheme.titleMedium,

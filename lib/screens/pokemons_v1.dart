@@ -5,10 +5,10 @@ import 'package:flutter_hello/routes.dart';
 import 'package:flutter_hello/service/pokemons.dart';
 
 class PokemonsPage extends StatefulWidget {
-  PokemonsPage({Key? key}) : super(key: key);
+  const PokemonsPage({Key? key}) : super(key: key);
 
   @override
-  _PokemonsPageState createState() => _PokemonsPageState();
+  State<PokemonsPage> createState() => _PokemonsPageState();
 }
 
 class _PokemonsPageState extends State<PokemonsPage> {
@@ -24,7 +24,7 @@ class _PokemonsPageState extends State<PokemonsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pokemons'),
+        title: const Text('Pokemons'),
       ),
       body: Center(
         child: FutureBuilder<List<Pokemon>>(
@@ -38,8 +38,9 @@ class _PokemonsPageState extends State<PokemonsPage> {
 
                     return Card(
                         child: Padding(
-                      padding: EdgeInsets.all(32),
+                      padding: const EdgeInsets.all(32),
                       child: Container(
+                        alignment: Alignment.center,
                         child: GestureDetector(
                           onTap: () => Navigator.pushNamed(context, Routes.pokemonDetailsPagePath,
                               arguments: Pokemon(name: item.name, url: item.url)),
@@ -48,19 +49,18 @@ class _PokemonsPageState extends State<PokemonsPage> {
                             child: Material(
                               child: Text(
                                 item.name,
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                               ),
                             ),
                           ),
                         ),
-                        alignment: Alignment.center,
                       ),
                     ));
                   });
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           },
         ),
       ),

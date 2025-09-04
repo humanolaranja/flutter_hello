@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hello/entities/pokemon.dart';
 import 'package:flutter_hello/entities/pokemon_details.dart';
-import 'package:flutter_hello/service/pokemons.dart';
+import 'package:flutter_hello/service/pokemons.dart' as service;
 
 /// A ChangeNotifier that manages the state of Pokemon data
 ///
@@ -11,6 +11,15 @@ class PokemonProvider extends ChangeNotifier {
   List<Pokemon> _pokemons = [];
   bool _isLoading = false;
   String? _error;
+
+  final Future<List<Pokemon>> Function() _fetchPokemons;
+  final Function(String url) _fetchPokemon;
+
+  PokemonProvider({
+    Future<List<Pokemon>> Function()? fetchPokemonsFunction,
+    Function(String url)? fetchPokemonFunction,
+  })  : _fetchPokemons = fetchPokemonsFunction ?? service.fetchPokemons,
+        _fetchPokemon = fetchPokemonFunction ?? service.fetchPokemon;
 
   // Getters
   List<Pokemon> get pokemons => _pokemons;
@@ -24,7 +33,7 @@ class PokemonProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _pokemons = await fetchPokemons();
+      _pokemons = await _fetchPokemons();
     } catch (e) {
       _error = 'Failed to load Pokemons: ${e.toString()}';
     } finally {
@@ -36,7 +45,7 @@ class PokemonProvider extends ChangeNotifier {
   /// Get Pokemon details by URL
   Future<PokemonDetails> getPokemonDetails(String url) async {
     try {
-      return await fetchPokemon(url);
+      return await _fetchPokemon(url);
     } catch (e) {
       _error = 'Failed to load Pokemon details: ${e.toString()}';
       notifyListeners();

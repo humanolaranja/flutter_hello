@@ -9,10 +9,10 @@ class NotifierExamplesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('State Management Examples'),
+        title: const Text('State Management Examples'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
           _buildSection(
             title: 'ChangeNotifier',
@@ -30,7 +30,7 @@ class NotifierExamplesPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           _buildSection(
             title: 'ValueNotifier',
             description: 'Used for simple state management with a single value',
@@ -51,7 +51,7 @@ class NotifierExamplesPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           _buildSection(
             title: 'Combined Example',
             description: 'Using both ChangeNotifier and ValueNotifier together',
@@ -78,14 +78,14 @@ class NotifierExamplesPage extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           description,
           style: TextStyle(fontSize: 16, color: Colors.grey[700]),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         ...examples,
       ],
     );
@@ -97,11 +97,11 @@ class NotifierExamplesPage extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return Card(
-      margin: EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(
         title: Text(title),
         subtitle: Text(description),
-        trailing: Icon(Icons.arrow_forward_ios),
+        trailing: const Icon(Icons.arrow_forward_ios),
         onTap: onTap,
       ),
     );
@@ -143,7 +143,7 @@ class NotifierExamplesPage extends StatelessWidget {
                 themeMode: themeNotifier.themeMode,
                 theme: ThemeData.light(),
                 darkTheme: ThemeData.dark(),
-                home: CombinedNotifierExample(),
+                home: const CombinedNotifierExample(),
               );
             },
           ),
@@ -158,13 +158,13 @@ class _ChangeNotifierCounterExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ChangeNotifier Counter'),
+        title: const Text('ChangeNotifier Counter'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You have pushed the button this many times:'),
+            const Text('You have pushed the button this many times:'),
             // Use Consumer to listen to changes
             Consumer<CounterChangeNotifier>(
               builder: (context, counter, child) {
@@ -174,23 +174,23 @@ class _ChangeNotifierCounterExample extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: () => context.read<CounterChangeNotifier>().decrement(),
-                  child: Icon(Icons.remove),
+                  child: const Icon(Icons.remove),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () => context.read<CounterChangeNotifier>().reset(),
-                  child: Icon(Icons.refresh),
+                  child: const Icon(Icons.refresh),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () => context.read<CounterChangeNotifier>().increment(),
-                  child: Icon(Icons.add),
+                  child: const Icon(Icons.add),
                 ),
               ],
             ),
@@ -213,9 +213,9 @@ class _ThemeSwitcherExample extends StatelessWidget {
           darkTheme: ThemeData.dark(),
           home: Scaffold(
             appBar: AppBar(
-              title: Text('Theme Switcher Example'),
+              title: const Text('Theme Switcher Example'),
               leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ),
@@ -227,15 +227,15 @@ class _ThemeSwitcherExample extends StatelessWidget {
                     themeNotifier.isDarkMode ? Icons.dark_mode : Icons.light_mode,
                     size: 100,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     themeNotifier.isDarkMode ? 'Dark Mode' : 'Light Mode',
-                    style: TextStyle(fontSize: 24),
+                    style: const TextStyle(fontSize: 24),
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   ElevatedButton.icon(
-                    icon: Icon(Icons.swap_horiz),
-                    label: Text('Toggle Theme'),
+                    icon: const Icon(Icons.swap_horiz),
+                    label: const Text('Toggle Theme'),
                     onPressed: () => themeNotifier.toggleTheme(),
                   ),
                 ],

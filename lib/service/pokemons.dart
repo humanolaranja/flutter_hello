@@ -2,8 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_hello/entities/pokemon.dart';
 import 'package:flutter_hello/entities/pokemon_details.dart';
 
-Future<List<Pokemon>> fetchPokemons() async {
-  final response = await Dio().get('https://pokeapi.co/api/v2/pokemon');
+Future<List<Pokemon>> fetchPokemons({Dio? dio}) async {
+  dio ??= Dio();
+  final response = await dio.get('https://pokeapi.co/api/v2/pokemon');
 
   if (response.statusCode == 200) {
     Map<String, dynamic> responseJson = response.data;
@@ -15,8 +16,9 @@ Future<List<Pokemon>> fetchPokemons() async {
   }
 }
 
-Future<PokemonDetails> fetchPokemon(String url) async {
-  final response = await Dio().get(url);
+Future<PokemonDetails> fetchPokemon(String url, {Dio? dio}) async {
+  dio ??= Dio();
+  final response = await dio.get(url);
 
   if (response.statusCode == 200) {
     return PokemonDetails.fromJson(response.data);

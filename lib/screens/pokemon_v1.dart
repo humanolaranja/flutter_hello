@@ -8,7 +8,7 @@ class PokemonPage extends StatefulWidget {
   const PokemonPage(this.pokemon, {Key? key}) : super(key: key);
 
   @override
-  _PokemonPageState createState() => _PokemonPageState();
+  State<PokemonPage> createState() => _PokemonPageState();
 }
 
 class _PokemonPageState extends State<PokemonPage> {
@@ -44,14 +44,14 @@ class _PokemonPageState extends State<PokemonPage> {
                   } else if (snapshot.hasError) {
                     return Text(snapshot.error.toString());
                   }
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 }),
             Hero(
               tag: widget.pokemon.name,
               child: Material(
                 child: Text(
                   widget.pokemon.name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
               ),
             ),

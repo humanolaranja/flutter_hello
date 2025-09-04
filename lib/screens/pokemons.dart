@@ -6,10 +6,10 @@ import 'package:flutter_hello/routes.dart';
 import 'package:provider/provider.dart';
 
 class PokemonsPage extends StatefulWidget {
-  PokemonsPage({Key? key}) : super(key: key);
+  const PokemonsPage({Key? key}) : super(key: key);
 
   @override
-  _PokemonsPageState createState() => _PokemonsPageState();
+  State<PokemonsPage> createState() => _PokemonsPageState();
 }
 
 class _PokemonsPageState extends State<PokemonsPage> {
@@ -26,7 +26,7 @@ class _PokemonsPageState extends State<PokemonsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pokemons'),
+        title: const Text('Pokemons'),
         actions: [
           // Display count of favorite pokemons using ValueNotifier
           ValueListenableBuilder<List<Pokemon>>(
@@ -36,8 +36,8 @@ class _PokemonsPageState extends State<PokemonsPage> {
                 padding: const EdgeInsets.only(right: 16.0),
                 child: Row(
                   children: [
-                    Icon(Icons.favorite),
-                    SizedBox(width: 4),
+                    const Icon(Icons.favorite),
+                    const SizedBox(width: 4),
                     Text('${favorites.length}'),
                   ],
                 ),
@@ -46,7 +46,7 @@ class _PokemonsPageState extends State<PokemonsPage> {
           ),
           // Add button to navigate to examples page
           IconButton(
-            icon: Icon(Icons.school),
+            icon: const Icon(Icons.school),
             tooltip: 'State Management Examples',
             onPressed: () => Navigator.pushNamed(context, Routes.notifierExamplesPath),
           ),
@@ -55,7 +55,7 @@ class _PokemonsPageState extends State<PokemonsPage> {
       body: Consumer<PokemonProvider>(
         builder: (context, provider, child) {
           if (provider.isLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (provider.error != null) {
@@ -66,7 +66,7 @@ class _PokemonsPageState extends State<PokemonsPage> {
                   Text(provider.error!),
                   ElevatedButton(
                     onPressed: () => provider.fetchAllPokemons(),
-                    child: Text('Retry'),
+                    child: const Text('Retry'),
                   ),
                 ],
               ),
@@ -74,7 +74,7 @@ class _PokemonsPageState extends State<PokemonsPage> {
           }
 
           if (provider.pokemons.isEmpty) {
-            return Center(child: Text('No Pokemons found'));
+            return const Center(child: Text('No Pokemons found'));
           }
 
           return ListView.builder(
@@ -106,7 +106,7 @@ class PokemonListItem extends StatelessWidget {
 
         return Card(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Row(
               children: [
                 Expanded(
@@ -122,7 +122,7 @@ class PokemonListItem extends StatelessWidget {
                         color: Colors.transparent,
                         child: Text(
                           pokemon.name,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                         ),
                       ),
                     ),

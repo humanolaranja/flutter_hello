@@ -10,7 +10,7 @@ class PokemonPage extends StatefulWidget {
   const PokemonPage(this.pokemon, {Key? key}) : super(key: key);
 
   @override
-  _PokemonPageState createState() => _PokemonPageState();
+  State<PokemonPage> createState() => _PokemonPageState();
 }
 
 class _PokemonPageState extends State<PokemonPage> {
@@ -34,7 +34,7 @@ class _PokemonPageState extends State<PokemonPage> {
             valueListenable: context.read<FavoritePokemonNotifier>(),
             builder: (context, favorites, _) {
               final isFavorite = favorites.any((p) => p.name == widget.pokemon.name);
-              
+
               return IconButton(
                 icon: Icon(
                   isFavorite ? Icons.favorite : Icons.favorite_border,
@@ -55,50 +55,48 @@ class _PokemonPageState extends State<PokemonPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FutureBuilder<PokemonDetails>(
-              future: futurePokemon,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Image.network(
-                    snapshot.data!.sprites.image,
-                    height: 200,
-                    fit: BoxFit.fitWidth,
-                  );
-                } else if (snapshot.hasError) {
-                  return Column(
-                    children: [
-                      Text('Error: ${snapshot.error}'),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            futurePokemon = context.read<PokemonProvider>()
-                                .getPokemonDetails(widget.pokemon.url);
-                          });
-                        },
-                        child: Text('Retry'),
-                      ),
-                    ],
-                  );
-                }
-                return CircularProgressIndicator();
-              }
-            ),
-            SizedBox(height: 20),
+                future: futurePokemon,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Image.network(
+                      snapshot.data!.sprites.image,
+                      height: 200,
+                      fit: BoxFit.fitWidth,
+                    );
+                  } else if (snapshot.hasError) {
+                    return Column(
+                      children: [
+                        Text('Error: ${snapshot.error}'),
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              futurePokemon = context.read<PokemonProvider>().getPokemonDetails(widget.pokemon.url);
+                            });
+                          },
+                          child: const Text('Retry'),
+                        ),
+                      ],
+                    );
+                  }
+                  return const CircularProgressIndicator();
+                }),
+            const SizedBox(height: 20),
             Hero(
               tag: widget.pokemon.name,
               child: Material(
                 child: Text(
                   widget.pokemon.name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Display favorite status with ValueListenableBuilder
             ValueListenableBuilder<List<Pokemon>>(
               valueListenable: context.read<FavoritePokemonNotifier>(),
               builder: (context, favorites, _) {
                 final isFavorite = favorites.any((p) => p.name == widget.pokemon.name);
-                
+
                 return Text(
                   isFavorite ? 'Added to Favorites' : 'Not in Favorites',
                   style: TextStyle(
