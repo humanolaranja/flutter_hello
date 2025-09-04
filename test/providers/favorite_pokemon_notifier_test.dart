@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_hello/providers/favorite_pokemon_notifier.dart';
-import 'package:flutter_hello/entities/pokemon.dart';
+import 'package:flutter_hello/entities/pokemon_entity.dart';
 
 void main() {
   late FavoritePokemonNotifier notifier;

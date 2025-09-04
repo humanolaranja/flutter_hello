@@ -1,4 +1,4 @@
-import 'package:flutter_hello/entities/pokemon_details_sprites.dart';
+import 'package:flutter_hello/entities/pokemon_details_sprites_entity.dart';
 
 class PokemonDetails {
   final PokemonDetailsSprite sprites;

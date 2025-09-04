@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_hello/entities/pokemon.dart';
-import 'package:flutter_hello/entities/pokemon_details.dart';
-import 'package:flutter_hello/entities/pokemon_details_sprites.dart';
+import 'package:flutter_hello/entities/pokemon_entity.dart';
+import 'package:flutter_hello/entities/pokemon_details_entity.dart';
+import 'package:flutter_hello/entities/pokemon_details_sprites_entity.dart';
 import 'package:flutter_hello/providers/pokemon_provider.dart';
 import 'package:flutter_hello/providers/favorite_pokemon_notifier.dart';
 import 'package:flutter_hello/screens/pokemons.dart';

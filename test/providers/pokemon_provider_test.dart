@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_hello/providers/pokemon_provider.dart';
-import 'package:flutter_hello/entities/pokemon.dart';
-import 'package:flutter_hello/entities/pokemon_details.dart';
-import 'package:flutter_hello/entities/pokemon_details_sprites.dart';
+import 'package:flutter_hello/entities/pokemon_entity.dart';
+import 'package:flutter_hello/entities/pokemon_details_entity.dart';
+import 'package:flutter_hello/entities/pokemon_details_sprites_entity.dart';
 
 // Create a custom function for testing
 Future<List<Pokemon>> mockFetchPokemons() async {

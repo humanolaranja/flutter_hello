@@ -2,9 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_hello/service/pokemons.dart';
-import 'package:flutter_hello/entities/pokemon.dart';
-import 'package:flutter_hello/entities/pokemon_details.dart';
+import 'package:flutter_hello/service/pokemon_service.dart';
+import 'package:flutter_hello/entities/pokemon_entity.dart';
+import 'package:flutter_hello/entities/pokemon_details_entity.dart';
 
 // Generate mocks
 @GenerateMocks([Dio])
@@ -61,13 +61,11 @@ void main() {
 
   group('fetchPokemon', () {
     const url = 'https://pokeapi.co/api/v2/pokemon/1/';
-    
+
     test('should return PokemonDetails when API call is successful', () async {
       // Arrange
       final responseData = {
-        'sprites': {
-          'front_default': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
-        }
+        'sprites': {'front_default': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'}
       };
 
       when(mockDio.get(url)).thenAnswer(

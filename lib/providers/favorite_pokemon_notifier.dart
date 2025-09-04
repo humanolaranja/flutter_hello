@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hello/entities/pokemon.dart';
+import 'package:flutter_hello/entities/pokemon_entity.dart';
 
 /// A ValueNotifier that manages favorite Pokemon
 ///

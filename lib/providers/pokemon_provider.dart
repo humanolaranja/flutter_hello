@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hello/entities/pokemon.dart';
-import 'package:flutter_hello/entities/pokemon_details.dart';
-import 'package:flutter_hello/service/pokemons.dart' as service;
+import 'package:flutter_hello/entities/pokemon_entity.dart';
+import 'package:flutter_hello/entities/pokemon_details_entity.dart';
+import 'package:flutter_hello/service/pokemon_service.dart' as service;
 
 /// A ChangeNotifier that manages the state of Pokemon data
 ///

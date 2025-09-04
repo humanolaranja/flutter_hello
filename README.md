@@ -2,6 +2,13 @@
 marp: true
 theme: uncover
 class: invert
+
+---
+
+## Linguagem utilizada
+
+Dart
+
 ---
 
 # Hello World com Flutter 🌎
@@ -73,11 +80,15 @@ counter.value++;
 ---
 
 Referências
-- [Flutter Page](https://flutter.dev/)
-- [Flutter Docs](https://flutter.dev/docs)
-- [Basic Widgets](https://flutter.dev/docs/development/ui/widgets/basics)
-- [HTTP Package](https://pub.dev/packages/http)
-- [Provider Package](https://pub.dev/packages/provider)
+- [DartPad](https://dartpad.dev/?sample=fibonacci)
+- [Flutter Archive](https://docs.flutter.dev/install/archive)
+- [Flutter Install](https://docs.flutter.dev/install/manual)
+- [Widgets Catalog](https://docs.flutter.dev/reference/widgets)
+- [Widget of the week](https://www.youtube.com/playlist?list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG)
+- [PokeApi](https://pokeapi.co/)
+- [Dio Package](https://pub.dev/packages/dio)
+
+
 
 ---
 

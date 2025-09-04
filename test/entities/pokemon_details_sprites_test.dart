@@ -1,13 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_hello/entities/pokemon_details_sprites.dart';
+import 'package:flutter_hello/entities/pokemon_details_sprites_entity.dart';
 
 void main() {
   group('PokemonDetailsSprite', () {
     test('should create PokemonDetailsSprite from json', () {
       // Arrange
-      final json = {
-        'front_default': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
-      };
+      final json = {'front_default': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'};
 
       // Act
       final sprite = PokemonDetailsSprite.fromJson(json);

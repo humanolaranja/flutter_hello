@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_hello/entities/pokemon.dart';
-import 'package:flutter_hello/entities/pokemon_details.dart';
+import 'package:flutter_hello/entities/pokemon_entity.dart';
+import 'package:flutter_hello/entities/pokemon_details_entity.dart';
 
 Future<List<Pokemon>> fetchPokemons({Dio? dio}) async {
   dio ??= Dio();

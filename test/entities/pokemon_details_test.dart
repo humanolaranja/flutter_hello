@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_hello/entities/pokemon_details.dart';
+import 'package:flutter_hello/entities/pokemon_details_entity.dart';
 
 void main() {
   group('PokemonDetails', () {

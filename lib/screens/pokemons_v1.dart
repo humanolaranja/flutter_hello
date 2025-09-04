@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_hello/entities/pokemon.dart';
+import 'package:flutter_hello/entities/pokemon_entity.dart';
 import 'package:flutter_hello/routes.dart';
-import 'package:flutter_hello/service/pokemons.dart';
+import 'package:flutter_hello/service/pokemon_service.dart';
 
 class PokemonsPage extends StatefulWidget {
   const PokemonsPage({Key? key}) : super(key: key);
